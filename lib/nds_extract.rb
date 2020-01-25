@@ -1,5 +1,6 @@
 # Provided, don't edit
 require 'directors_database'
+require 'pry'
 
 # A method we're giving you. This "flattens"  Arrays of Arrays so: [[1,2],
 # [3,4,5], [6]] => [1,2,3,4,5,6].
@@ -48,6 +49,20 @@ def movies_with_director_key(name, movies_collection)
   # Array of Hashes where each Hash represents a movie; however, they should all have a
   # :director_name key. This addition can be done by using the provided
   # movie_with_director_name method
+  
+  arr = []
+  i = 0
+  while i < movies_collection.length do
+   # hash1 = {:director_name => name}
+   hash1 = movies_collection[i]
+   hash1[:director_name] = name
+   arr << hash1
+
+  i += 1
+  end
+  # binding.pry
+  arr
+  binding.pry
 end
 
 
@@ -76,7 +91,36 @@ def movies_with_directors_set(source)
   #
   # Array of Arrays containing all of a director's movies. Each movie will need
   # to have a :director_name key added to it.
+  arr = []
+  movies = []
+  name = {}
+  i = 0
+  # binding.pry
+  while i < source.length do
+    arr << source[i]
+    i += 1
+  end
+  arr
+    # binding.pry
 end
+# describe 'movies_with_directors_set' do
+#   describe -----'when given a Hash with keys :name and :movies,' do
+#     describe ---'returns an Array of Hashes that represent movies' do
+#       describe -'and each Hash has a :director_name key set with the value that was in :name' do
+#         # -------This lets "sample_data" be used in the two "it" statements below
+#         let (:test_data) {
+#           [
+#             { :name => "Byron Poodle", :movies => [
+#               { :title => "At the park" },
+#               { :title => "On the couch" },
+#             ]
+#             },
+#             { :name => "Nancy Drew", :movies => [
+#               { :title => "Biting" },
+#             ]
+#             }
+#           ] 
+#         }
 
 # ----------------    End of Your Code Region --------------------
 # Don't edit the following code! Make the methods above work with this method
